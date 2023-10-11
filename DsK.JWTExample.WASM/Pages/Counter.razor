@@ -19,6 +19,9 @@
 
     protected override async Task OnInitializedAsync()
     {
+        // Check Token Expiration
+        await _securityServiceClient.PrepareBearerToken();
+
         var state = await authenticationState;
         _AccessCounterIncrement = state.User.IsInRole("Counter.Increment");
         //_AccessCounterIncrement = _securityServiceClient.HasPermission(state.User, "Counter.Increment");
