@@ -29,6 +29,12 @@
     string loginResult = "";
     LoginRequest model = new LoginRequest();
 
+    protected override async Task OnInitializedAsync()
+    {
+        // Check if a refresh token exist to allow the user access to the app without having to re-log again.
+        await _securityServiceClient.PrepareBearerToken();
+    }
+
     private async void SubmitAsync()
     {
         loginResult = "Login in progress...";

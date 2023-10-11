@@ -41,6 +41,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        // Check Token Expiration
         await _securityServiceClient.PrepareBearerToken();
         forecasts = await _http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
     }
