@@ -1,0 +1,3 @@
+refresh token on 1st login
+auto logout on inactivity timer
+check token expiration on every page

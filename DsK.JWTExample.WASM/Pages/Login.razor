@@ -1,0 +1,40 @@
+﻿@page "/Login"
+@attribute [AllowAnonymous]
+
+<br />
+<div class="card mx-auto" style="width: 18rem;">
+    <br />
+    <h3 class="mx-auto">Login</h3>
+
+    <h4>@loginResult</h4>
+
+    <div class="card-body">
+        <EditForm Model="model" OnValidSubmit="SubmitAsync">
+            <div class="form-group">
+                <label for="Username">Username</label>
+                <InputText class="form-control" id="Username" aria-describedby="Username" placeholder="Enter Username" @bind-Value="model.Username" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <InputText type="password" class="form-control" id="Password" placeholder="Password" @bind-Value="model.Password" />
+            </div>
+            <br />
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    string loginResult = "";
+    LoginRequest model = new LoginRequest();
+
+    private async void SubmitAsync()
+    {
+        loginResult = "Login in progress...";
+        loginResult = await _securityServiceClient.Login(model);
+        StateHasChanged();
+        _navigationManager.NavigateTo("/");
+    }
+}
+
