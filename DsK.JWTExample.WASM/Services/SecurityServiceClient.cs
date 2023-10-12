@@ -1,11 +1,9 @@
 ﻿using Blazored.LocalStorage;
 using DsK.JWTExample.Shared;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Security.Claims;
-using static System.Net.WebRequestMethods;
 
 namespace DsK.JWTExample.WASM.Services;
 
@@ -91,17 +89,17 @@ public class SecurityServiceClient
             return string.Empty;
         }
 
-        var result = await response.Content.ReadFromJsonAsync<TokenModel>();
-        if (result == null)
+        try
         {
-            await _localStorageService.RemoveItemAsync("token");
-            await _localStorageService.RemoveItemAsync("refreshToken");
-            return string.Empty;
+            var result = await response.Content.ReadFromJsonAsync<TokenModel>();
+            await _localStorageService.SetItemAsync("token", result.Token);
+            await _localStorageService.SetItemAsync("refreshToken", result.RefreshToken);
+            return result.Token;
         }
-        await _localStorageService.SetItemAsync("token", result.Token);
-        await _localStorageService.SetItemAsync("refreshToken", result.RefreshToken);
-
-        return result.Token;
+        catch (Exception)
+        {
+            return "";
+        }
     }
     public bool HasPermission(ClaimsPrincipal user, string permission)
     {

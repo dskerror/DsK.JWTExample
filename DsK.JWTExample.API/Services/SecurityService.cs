@@ -46,7 +46,7 @@ public class SecurityService
             }
         }
 
-        return null;
+        return new TokenModel("","");
     }
     private bool IsUserAuthenticated(LoginRequest loginRequest)
     {
