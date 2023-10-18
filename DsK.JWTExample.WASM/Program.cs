@@ -22,4 +22,8 @@ builder.Services.AddScoped<SecurityServiceClient>();
 /* ---Manages saving to local storage--- */
 builder.Services.AddBlazoredLocalStorage();
 
+/* ----Manage Token Check on every page load---- */
+builder.Services.AddSingleton<TabChangeEventService>();
+
+
 await builder.Build().RunAsync();

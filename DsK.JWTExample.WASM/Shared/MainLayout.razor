@@ -1,4 +1,7 @@
 ﻿@inherits LayoutComponentBase
+@inject TabChangeEventService TabChangeService
+@inject NavigationManager NavigationManager
+@implements IDisposable
 @using DsK.JWTExample.WASM.Pages
 <AuthorizeView>
     <Authorized>
@@ -17,3 +20,27 @@
         <Login />
     </NotAuthorized>
 </AuthorizeView>
+
+@code {
+    protected override void OnInitialized()
+    {
+        NavigationManager.LocationChanged += HandleLocationChanged;
+    }
+
+    // This method is triggered when the location changes.
+    private async void HandleLocationChanged(object sender, LocationChangedEventArgs e)
+    {
+        // Call the method you want to execute on tab change.
+        await RunOnTabChangedAsync();
+    }
+
+    private async Task RunOnTabChangedAsync()
+    {
+        await _securityServiceClient.PrepareBearerToken();
+    }
+
+    public void Dispose() // Unsubscribe when the component is destroyed to avoid memory leaks.
+    {
+        NavigationManager.LocationChanged -= HandleLocationChanged;
+    }
+}
