@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DsK.JWTExample.API", "DsK.JWTExample.API\DsK.JWTExample.API.csproj", "{CDD982D2-8A12-4CD0-93E3-EDC02EBCE91B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DsK.JWTExample.API", "DsK.JWTExample.API\DsK.JWTExample.API.csproj", "{CDD982D2-8A12-4CD0-93E3-EDC02EBCE91B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DsK.JWTExample.Shared", "DsK.JWTExample.Shared\DsK.JWTExample.Shared.csproj", "{50D9B6E6-C967-413C-B895-897E5EAA503F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DsK.JWTExample.Shared", "DsK.JWTExample.Shared\DsK.JWTExample.Shared.csproj", "{50D9B6E6-C967-413C-B895-897E5EAA503F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DsK.JWTExample.WASM", "DsK.JWTExample.WASM\DsK.JWTExample.WASM.csproj", "{4DCED309-7EE4-4309-AE11-3E40B62CE3FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DsK.JWTExample.WASM", "DsK.JWTExample.WASM\DsK.JWTExample.WASM.csproj", "{4DCED309-7EE4-4309-AE11-3E40B62CE3FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

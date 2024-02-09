@@ -1,0 +1,15 @@
+﻿@inherits MainLayout
+@Body
+
+@code {
+    [CascadingParameter] private Task<AuthenticationState> authenticationState { get; set; }
+    private int currentCount = 0;
+    private bool _AccessCounterIncrement;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Check Token Expiration
+        await _securityServiceClient.PrepareBearerToken();
+        StateHasChanged();
+    }
+}

@@ -17,3 +17,12 @@
         <Login />
     </NotAuthorized>
 </AuthorizeView>
+
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        await _securityServiceClient.PrepareBearerToken();
+    }
+}
